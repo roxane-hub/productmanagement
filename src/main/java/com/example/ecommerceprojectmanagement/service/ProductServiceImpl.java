@@ -1,7 +1,7 @@
 package com.example.ecommerceprojectmanagement.service;
 
-import com.example.productmanagementsystem1.model.Product;
-import com.example.productmanagementsystem1.repository.ProductRepository;
+import com.example.ecommerceprojectmanagement.model.Product;
+import com.example.ecommerceprojectmanagement.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,5 +45,35 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Product> findProductsByPriceGreaterThan(Double price) {
+        return productRepository.findProductsByPriceGreaterThan(price);
+    }
+
+    @Override
+    public List<Product> findProductsByCategoryName(String categoryName) {
+        return productRepository.findProductsByCategoryName(categoryName);
+    }
+
+    @Override
+    public List<Product> findProductsByNameContaining(String name) {
+        return productRepository.findProductsByNameContaining(name);
+    }
+
+    @Override
+    public List<Product> findLowStockProducts(Integer quantity) {
+        return productRepository.findLowStockProducts(quantity);
+    }
+
+    @Override
+    public List<Product> findProductsByPriceRange(Double minPrice, Double maxPrice) {
+        return productRepository.findProductsByPriceRange(minPrice, maxPrice);
+    }
+
+    @Override
+    public List<Product> findAllProductsOrderByPriceDesc() {
+        return productRepository.findAllProductsOrderByPriceDesc();
     }
 }
